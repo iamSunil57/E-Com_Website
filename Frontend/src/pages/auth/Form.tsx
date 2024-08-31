@@ -130,7 +130,7 @@ const Form: React.FC<Props> = ({ type, onSubmit }) => {
                         className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-blue-700 bg-blue-700 px-6 py-3 font-semibold leading-6 text-white hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:ring focus:ring-blue-400/50 active:border-blue-700 active:bg-blue-700 dark:focus:ring-blue-400/90"
                       >
                         <svg
-                          className="hi-mini hi-arrow-uturn-right inline-block size-5 opacity-50"
+                          className="hi-mini hi-arrow-u turn-right inline-block size-5 opacity-50"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
