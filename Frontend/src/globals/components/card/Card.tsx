@@ -8,7 +8,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
   return (
     <>
       <Link to={`/product/${data.id}`}>
-        <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md m-5">
+        <div className="group my-5 flex w-full max-w-xs flex-col overflow-hidden border border-gray-100 bg-white shadow-md">
           <a className="relative flex h-60 overflow-hidden" href="#">
             <img
               className="absolute top-0 right-0 h-full w-full object-cover"
@@ -38,19 +38,19 @@ const Card: React.FC<CardProps> = ({ data }) => {
             </div>
           </a>
           <div className="mt-4 px-5 pb-5">
-            <a href="#">
+            <Link to="#">
               <h5 className="text-xl tracking-tight text-slate-900">
                 {data?.productName}
               </h5>
-            </a>
+            </Link>
             <div className="mt-2 mb-5 flex items-center justify-between">
               <p>
                 <span className="text-3xl font-bold text-slate-900">
                   Rs.{data.productPrice}
                 </span>
-                <span className="text-sm text-slate-900 line-through">
-                  Rs.{data.productPrice + 500}
-                </span>
+                {/* <span className="text-sm text-slate-900 line-through">
+                  Rs.{data.productPrice + 100}
+                </span> */}
               </p>
             </div>
             <button className="flex items-center justify-center bg-gray-900 px-2 py-1 text-sm text-white transition hover:bg-gray-700">

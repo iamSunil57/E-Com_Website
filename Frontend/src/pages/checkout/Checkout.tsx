@@ -9,6 +9,7 @@ import {
 import { orderItem } from "../../store/checkoutSlice";
 import { Status } from "../../globals/types/types";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../globals/components/footer/Footer";
 
 const Checkout = () => {
   const { items } = useAppSelector((state) => state.carts);
@@ -64,9 +65,9 @@ const Checkout = () => {
       totalAmount: subtotal,
     };
     await dispatch(orderItem(orderData));
-    // if(status === Status.SUCCESS){
-    //   alert("Order Placed successfully")
-    // }
+    if (status === Status.SUCCESS) {
+      alert("Order Placed successfully");
+    }
   };
 
   useEffect(() => {
@@ -86,7 +87,7 @@ const Checkout = () => {
       <div className="flex flex-col items-center border-b bg-white mt-[-100px] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <div className="mt-4 py-7 text-xs sm:mt-0 sm:ml-auto sm:text-base"></div>
       </div>
-      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 xl:mb-5">
         <div className="px-4 pt-8">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
@@ -102,18 +103,18 @@ const Checkout = () => {
                   >
                     <img
                       className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                      src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                      alt=""
+                      src={item?.Product?.productImage}
+                      alt="image"
                     />
                     <div className="flex w-full flex-col px-4 py-4">
                       <span className="font-semibold">
                         {item?.Product?.productName}
                       </span>
                       <span className="float-right text-gray-400">
-                        Qty :{item?.quantity}{" "}
+                        Qty :{item?.quantity}
                       </span>
                       <p className="text-lg font-bold">
-                        Rs. {item?.Product?.productPrice}{" "}
+                        Rs. {item?.Product?.productPrice}
                       </p>
                     </div>
                   </div>
@@ -176,7 +177,7 @@ const Checkout = () => {
           </form>
         </div>
         <form noValidate onSubmit={handleSubmit}>
-          <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+          <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-15">
             <p className="text-xl font-medium">Payment Details</p>
             <p className="text-gray-400">
               Complete your order by providing your payment details.
@@ -261,6 +262,7 @@ const Checkout = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

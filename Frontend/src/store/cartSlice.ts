@@ -67,6 +67,7 @@ export function addToCart(productId: string) {
   };
 }
 
+//Fetch Cart Items:
 export function fetchCartItems() {
   return async function fetchCartItemsThunk(dispatch: AppDispatch) {
     dispatch(setStatus(Status.LOADING));
@@ -83,6 +84,8 @@ export function fetchCartItems() {
     }
   };
 }
+
+//Delete Cart Item:
 export function deleteCartItem(productId: string) {
   return async function deleteCartItemThunk(dispatch: AppDispatch) {
     dispatch(setStatus(Status.LOADING));
@@ -101,6 +104,8 @@ export function deleteCartItem(productId: string) {
     }
   };
 }
+
+//Update Cart Item:
 export function updateCartItem(productId: string, quantity: number) {
   return async function updateCartItemThunk(dispatch: AppDispatch) {
     dispatch(setStatus(Status.LOADING));

@@ -76,7 +76,7 @@ export function login(data: LoginData) {
     dispatch(setStatus(Status.LOADING));
     try {
       const response = await API.post("/login", data);
-      if ((response.status = 200)) {
+      if (response.status === 200) {
         const { data } = response.data;
         dispatch(setStatus(Status.SUCCESS));
         dispatch(setToken(data));

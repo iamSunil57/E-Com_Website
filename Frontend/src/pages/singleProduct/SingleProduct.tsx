@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useEffect } from "react";
 import { fetchByProductId } from "../../store/productSlice";
 import { addToCart } from "../../store/cartSlice";
+import Footer from "../../globals/components/footer/Footer";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -12,7 +13,6 @@ const SingleProduct = () => {
   console.log(SingleProduct);
   useEffect(() => {
     if (id) {
-      console.log("triggered", id);
       dispatch(fetchByProductId(id));
     }
   }, []);
@@ -26,7 +26,7 @@ const SingleProduct = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-100 dark:bg-gray-800 py-8">
+      <div className="bg-white dark:bg-gray-800 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row -mx-4">
             <div className="md:flex-1 px-4">
@@ -119,6 +119,7 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -22,7 +22,6 @@ const Form: React.FC<Props> = ({ type, onSubmit }) => {
   };
   return (
     <>
-      {/* Page Container */}
       <div
         id="page-container"
         className="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
@@ -30,7 +29,6 @@ const Form: React.FC<Props> = ({ type, onSubmit }) => {
         {/* Page Content */}
         <main id="page-content" className="flex max-w-full flex-auto flex-col">
           <div className="relative mx-auto flex min-h-dvh w-full max-w-10xl items-center justify-center overflow-hidden p-4 lg:p-8">
-            {/* Sign In Section */}
             <section className="w-full max-w-xl py-6">
               {/* Header */}
               <header className="mb-10 text-center">
@@ -56,8 +54,6 @@ const Form: React.FC<Props> = ({ type, onSubmit }) => {
                 </h2>
               </header>
               {/* END Header */}
-
-              {/* Sign In Form */}
 
               <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:text-gray-100">
                 <div className="grow p-5 md:px-16 md:py-12">

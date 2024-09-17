@@ -18,8 +18,6 @@ const Register = () => {
     if (status === Status.SUCCESS) {
       dispatch(resetStatus());
       navigate("/login");
-    } else {
-      alert("Something went wrong.");
     }
   }, [status, navigate, dispatch]);
   return <Form type="register" onSubmit={handleRegister} />;

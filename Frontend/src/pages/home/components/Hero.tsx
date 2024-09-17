@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../../../globals/components/navbar/Navbar";
 
 const Hero = () => {
@@ -22,8 +23,8 @@ const Hero = () => {
                 build your client’s web projects. Get it today and profit.
               </h2>
               <div className="flex flex-col justify-center gap-2 pb-16 pt-10 sm:flex-row sm:items-center lg:justify-start">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-700 bg-blue-700 px-7 py-3.5 font-semibold leading-6 text-white hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:ring focus:ring-blue-400/50 active:border-blue-700 active:bg-blue-700 dark:focus:ring-blue-400/90"
                 >
                   <svg
@@ -37,35 +38,33 @@ const Hero = () => {
                     <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
                   </svg>
                   <span>Download for free</span>
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="#"
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-7 py-3.5 font-semibold leading-6 text-gray-800 hover:border-gray-300 hover:text-gray-900 hover:shadow-sm focus:ring focus:ring-gray-300/25 active:border-gray-200 active:shadow-none dark:border-gray-700 dark:bg-transparent dark:text-black-300 dark:hover:border-gray-600 dark:hover:text-gray-200 dark:focus:ring-gray-600/40 dark:active:border-gray-700"
                 >
                   <span>Learn more</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="lg:ml-16 lg:flex lg:w-1/2 lg:items-center lg:justify-center">
             <div className="relative mx-5 lg:w-96">
-              <div className="bg-tranparent absolute left-0 top-0 -ml-20 -mt-16 size-40 rounded-full border border-blue-200 lg:size-72 dark:border-blue-900" />
-              <div className="bg-tranparent absolute left-0 top-0 -ml-14 -mt-20 size-40 rounded-full border border-blue-100 lg:size-72 dark:border-blue-950" />
-              <div className="bg-tranparent absolute bottom-0 right-0 -mb-16 -mr-20 size-40 rounded-full border border-blue-200 lg:size-72 dark:border-blue-900" />
-              <div className="bg-tranparent absolute bottom-0 right-0 -mb-20 -mr-14 size-40 rounded-full border border-blue-100 lg:size-72 dark:border-blue-950" />
+              <div className="bg-transparent absolute left-0 top-0 -ml-20 -mt-16 size-40 rounded-full border border-blue-200 lg:size-72 dark:border-blue-900" />
+              <div className="bg-transparent absolute left-0 top-0 -ml-14 -mt-20 size-40 rounded-full border border-blue-100 lg:size-72 dark:border-blue-950" />
+              <div className="bg-transparent absolute bottom-0 right-0 -mb-16 -mr-20 size-40 rounded-full border border-blue-200 lg:size-72 dark:border-blue-900" />
+              <div className="bg-transparent absolute bottom-0 right-0 -mb-20 -mr-14 size-40 rounded-full border border-blue-100 lg:size-72 dark:border-blue-950" />
               <div className="absolute inset-0 -m-6 -rotate-2 rounded-xl bg-gray-200 dark:bg-gray-800" />
               <div className="absolute inset-0 -m-6 rotate-1 rounded-xl bg-blue-800/75 shadow-inner dark:bg-blue-900/75" />
               <img
                 src="https://cdn.tailkit.com/media/placeholders/photo-RSCirJ70NDM-800x1000.jpg"
                 className="relative mx-auto rounded-lg shadow-lg"
-                alt="Hero Image"
+                alt="Image"
               />
             </div>
           </div>
         </div>
-        {/* END Hero Content */}
       </div>
-      {/* END Hero Section: Image Side with Simple Header */}
     </>
   );
 };

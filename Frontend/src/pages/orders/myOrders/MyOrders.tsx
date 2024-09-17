@@ -13,11 +13,9 @@ const MyOrders = () => {
   );
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [date, setDate] = useState<string>("");
-  // console.log(searchTerm);
   useEffect(() => {
     dispatch(fetchMyOrders());
   }, []);
-  // console.log(myOrders[0]);
 
   const filteredOrders = myOrders
     .filter(
@@ -56,7 +54,7 @@ const MyOrders = () => {
                     onChange={(e) =>
                       setSelectedItem(e.target.value as OrderStatus)
                     }
-                    className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                    className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
                   >
                     <option value={OrderStatus.All}>all</option>
                     <option value={OrderStatus.Pending}>pending</option>
@@ -130,20 +128,6 @@ const MyOrders = () => {
                       filteredOrders.map((order) => {
                         return (
                           <tr>
-                            {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                          <div className="flex items-center">
-                                              <div className="flex-shrink-0 w-10 h-10">
-                                                  <img className="w-full h-full rounded-full"
-                                                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                      alt="" />
-                                              </div>
-                                              <div className="ml-3">
-                                                  <p className="text-gray-900 whitespace-no-wrap">
-                                                      {order.orderName}
-                                                  </p>
-                                              </div>
-                                          </div>
-                                      </td> */}
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <Link to={`/myorders/${order.id}`}>
                                 <p

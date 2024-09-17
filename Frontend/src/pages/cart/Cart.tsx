@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../../globals/components/navbar/Navbar";
 import { deleteCartItem, updateCartItem } from "../../store/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import Footer from "../../globals/components/footer/Footer";
 
 const Cart = () => {
   const { items } = useAppSelector((state) => state.carts);
@@ -18,6 +19,7 @@ const Cart = () => {
     console.log("Updating productId:", productId, "Quantity:", quantity); // Debug line
     dispatch(updateCartItem(productId, quantity));
   };
+
   const totalItems = items.reduce((total, item) => item?.quantity + total, 0);
   const totalPrice = items.reduce(
     (total, item) => item?.Product?.productPrice * item?.quantity + total,
@@ -27,116 +29,144 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <div className="h-screen bg-gray-100 pt-20">
-        <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
-        <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-          <div className="rounded-lg md:w-2/3">
+
+      <div className="container mx-auto mt-10 px-4">
+        <div className="flex flex-wrap sm:flex-nowrap shadow-md my-10">
+          <div className="w-full sm:w-3/4 bg-white p-3 sm:px-5 sm:py-5">
+            <div className="flex justify-between border-b pb-8">
+              <h1 className="font-semibold text-2xl">Shopping Cart</h1>
+              <h2 className="font-semibold text-2xl">
+                Products: {items.length}
+              </h2>
+            </div>
+
             {items.length > 0 &&
               items.map((item) => {
-                console.log("item", item);
-
                 return (
-                  <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-                    <img
-                      src={item?.Product?.productImage}
-                      alt="product-image"
-                      className="w-full rounded-lg sm:w-40"
-                    />
-                    <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                      <div className="mt-5 sm:mt-0">
-                        <h2 className="text-lg font-bold text-gray-900">
-                          {item?.Product?.productName}
-                        </h2>
-                        <p className="mt-1 text-xs text-gray-700">
-                          {item?.Product?.Category?.categoryName}
+                  <div
+                    key={item?.Product?.id}
+                    className="md:flex items-stretch py-8 border-t border-gray-50"
+                  >
+                    <div className="md:w-4/12 2xl:w-1/4 w-full">
+                      <img
+                        src={item?.Product?.productImage}
+                        alt="Product Image"
+                        className="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+                      <p className="text-base font-black leading-none text-gray-800 mt-4">
+                        {item?.Product?.productName}
+                      </p>
+                      <div className="flex items-center justify-between w-full">
+                        <p className="text-xs leading-3 font-bold text-gray-800 md:pt-0 pt-2">
+                          Category: {item?.Product?.Category?.categoryName}
                         </p>
-                        <p className="mt-1 text-xs text-gray-700">
-                          {item?.Product?.productDescription}
-                        </p>
-                      </div>
-                      <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                        <div className="flex items-center border-gray-100">
-                          <span
+                        <div className="flex items-center">
+                          <button
                             onClick={() =>
                               handleUpdate(item?.productId, item?.quantity - 1)
                             }
-                            className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                            className="border rounded-md py-2 px-4 mr-2"
                           >
-                            {" "}
-                            -{" "}
+                            -
+                          </button>
+                          <span className="text-center w-8">
+                            {item.quantity}
                           </span>
-                          <input
-                            className="h-8 w-8 border bg-white text-center text-xs outline-none"
-                            type="number"
-                            value={item.quantity}
-                            min="1"
-                          />
-                          <span
+                          <button
                             onClick={() =>
-                              handleUpdate(item.productId, item?.quantity + 1)
+                              handleUpdate(item?.productId, item?.quantity + 1)
                             }
-                            className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                            className="border rounded-md py-2 px-4 ml-2"
                           >
-                            {" "}
-                            +{" "}
-                          </span>
+                            +
+                          </button>
                         </div>
-                        <div className="flex items-center space-x-4">
-                          <p className="text-sm">
-                            Rs {item?.Product?.productPrice}
-                          </p>
-                          <div onClick={() => handleDelete(item?.productId)}>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth="1.5"
-                              stroke="currentColor"
-                              className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
-                              />
-                            </svg>
-                          </div>
+                      </div>
+                      <p className="text-xs leading-3 font-semibold text-gray-600 pt-2">
+                        {item?.Product?.productDescription}
+                      </p>
+                      <p className="text-xs leading-3 text-gray-600 font-semibold py-4">
+                        Color: Black
+                      </p>
+                      <p className="w-full md:w-96 text-xs leading-3 text-gray-600">
+                        Composition: 100% calf leather
+                      </p>
+                      <div className="flex items-center justify-between pt-5">
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => {
+                              handleDelete(item?.Product?.id);
+                            }}
+                            className="p-2 px-6 ml-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                          >
+                            Remove
+                          </button>
                         </div>
+                        <p className="text-base font-black leading-none text-gray-800">
+                          Rs. {item?.Product?.productPrice}
+                        </p>
                       </div>
                     </div>
                   </div>
                 );
               })}
-          </div>
-          <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-            <div className="mb-2 flex justify-between">
-              <p className="text-gray-700">Total Items</p>
-              <p className="text-gray-700">{totalItems}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-gray-700">Sub Total</p>
-              <p className="text-gray-700">Rs. {totalPrice}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="text-gray-700">Shipping</p>
-              <p className="text-gray-700">Rs. 100</p>
-            </div>
-            <hr className="my-4" />
-            <div className="flex justify-between">
-              <p className="text-lg font-bold">Total</p>
-              <div className="">
-                <p className="mb-1 text-lg font-bold">Rs. {totalPrice + 100}</p>
-                <p className="text-sm text-gray-700">including VAT</p>
-              </div>
-            </div>
-            <Link to="/checkout">
-              <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
-                Check out
-              </button>
+
+            <Link
+              to="/"
+              className="flex font-semibold text-indigo-600 text-sm mt-10"
+            >
+              <svg
+                className="fill-current mr-2 text-indigo-600 w-4"
+                viewBox="0 0 448 512"
+              >
+                <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+              </svg>
+              Continue Shopping
             </Link>
+          </div>
+          <div
+            id="summary"
+            className="w-full sm:w-1/4 md:w-1/2 bg-gray-100 p-6 sm:px-8 sm:py-10"
+          >
+            <h1 className="font-semibold text-2xl border-b pb-8">
+              Order Summary
+            </h1>
+            <div className="flex justify-between mt-5 mb-5">
+              <span className="font-semibold text-sm uppercase">Items:</span>
+              <span>{totalItems}</span>
+            </div>
+            <div className="flex justify-between mt-5 mb-5">
+              <span className="font-semibold uppercase text-sm">
+                Sub Total:
+              </span>
+              <span> {totalPrice}</span>
+            </div>
+            <div className="flex justify-between mt-5 mb-5">
+              <span className="font-semibold uppercase text-sm">
+                Shipping Cost :
+              </span>
+              <span> {100}</span>
+            </div>
+
+            <div className="border-t mt-8">
+              <div className="flex font-semibold justify-between py-6 text-sm uppercase">
+                <span>Total Price:</span>
+                <span> {totalPrice + 100}</span>
+              </div>
+
+              <Link to="/checkout">
+                <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+                  CheckOut
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
